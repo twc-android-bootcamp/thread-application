@@ -69,7 +69,8 @@ public class LiveDataViewModel extends ViewModel {
         disposable = Observable.interval(1, 1, TimeUnit.SECONDS).subscribe(new Consumer<Long>() {
             @Override
             public void accept(Long aLong) throws Exception {
-                Log.d("timeTick", aLong.toString());
+                Log.d("TimeTick", aLong.toString());
+                Log.d("LiveData thread", Thread.currentThread().getName());
                 Long currentValue = timeTick.getValue();
                 timeTick.postValue(++currentValue);
             }
@@ -79,7 +80,7 @@ public class LiveDataViewModel extends ViewModel {
 
     @Override
     protected void onCleared() {
-        super.onCleared();
         stopUpdateTimeTick();
+        super.onCleared();
     }
 }

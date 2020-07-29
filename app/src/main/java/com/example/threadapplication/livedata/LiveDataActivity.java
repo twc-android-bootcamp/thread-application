@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -47,6 +48,7 @@ public class LiveDataActivity extends AppCompatActivity {
         viewModel.observeTimeTick(this, new Observer<Long>() {
             @Override
             public void onChanged(Long aLong) {
+                Log.d("UI thread", Thread.currentThread().getName());
                 content.setText("" + aLong);
             }
         });

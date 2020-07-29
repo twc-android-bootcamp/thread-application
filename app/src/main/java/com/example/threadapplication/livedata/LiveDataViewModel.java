@@ -35,10 +35,10 @@ public class LiveDataViewModel extends ViewModel {
 
     public void setIsStarted(Boolean value) {
         this.isStarted.postValue(value);
-        updateObservable(value);
+        updateTimeTick(value);
     }
 
-    private void updateObservable(Boolean value) {
+    private void updateTimeTick(Boolean value) {
         if(value) {
             startUpdateTimeTick();
         } else {

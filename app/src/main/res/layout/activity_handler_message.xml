@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:text="Handler Message"
+
+        android:layout_margin="10dp"/>
+
+    <Button
+        android:layout_marginTop="100dp"
+        android:id="@+id/start_thread"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/start_thread"
+        />
+
+    <Button
+        android:id="@+id/start_task_a"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/task_a"
+        />
+
+    <Button
+        android:id="@+id/start_task_b"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/task_b"
+        />
+
+    <Button
+        android:id="@+id/stop_thread"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/stop_thread"
+        />
+
+
+
+</LinearLayout>

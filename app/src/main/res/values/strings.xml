@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Thread Application</string>
+    <string name="task_a">Task A</string>
+    <string name="message_handler"><![CDATA[Message & Handler]]></string>
+    <string name="thread">Thread</string>
+    <string name="task_b">Task B</string>
+    <string name="start_thread">Start Thread</string>
+    <string name="stop_thread">Stop Thread</string>
+    <string name="start">start</string>
+    <string name="stop">stop</string>
+    <string name="live_data">Live Data</string>
+</resources>

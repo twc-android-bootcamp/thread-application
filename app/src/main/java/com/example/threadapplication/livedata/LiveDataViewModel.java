@@ -17,19 +17,19 @@ public class LiveDataViewModel extends ViewModel {
     private MutableLiveData<Long> timeTick;
     private Disposable disposable;
 
+    public LiveDataViewModel() {
+        isStarted = new MutableLiveData<>();
+        isStarted.postValue(false);
+
+        timeTick = new MutableLiveData<>();
+        timeTick.postValue(0L);
+    }
+
     public LiveData<Long> getTimeTick() {
-        if(timeTick == null) {
-            timeTick = new MutableLiveData<>();
-            timeTick.postValue(0L);
-        }
         return timeTick;
     }
 
     public LiveData<Boolean> getIsStarted() {
-        if(isStarted == null) {
-            isStarted = new MutableLiveData<>();
-            isStarted.postValue(false);
-        }
         return isStarted;
     }
 
@@ -61,7 +61,7 @@ public class LiveDataViewModel extends ViewModel {
     }
 
     private void startUpdateTimeTick() {
-        disposable = Observable.interval(0, 1, TimeUnit.SECONDS).subscribe(new Consumer<Long>() {
+        disposable = Observable.interval(1, 1, TimeUnit.SECONDS).subscribe(new Consumer<Long>() {
             @Override
             public void accept(Long aLong) throws Exception {
                 Log.d("timeTick", aLong.toString());

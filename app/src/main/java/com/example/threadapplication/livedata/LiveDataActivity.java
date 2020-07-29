@@ -36,7 +36,7 @@ public class LiveDataActivity extends AppCompatActivity {
     }
 
     private void subscribeLiveData() {
-        viewModel.getIsStarted().observe(this, new Observer<Boolean>() {
+        viewModel.observeIsStarted(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean isStarted) {
                 startBtn.setEnabled(!isStarted);
@@ -44,7 +44,7 @@ public class LiveDataActivity extends AppCompatActivity {
             }
         });
 
-        viewModel.getTimeTick().observe(this, new Observer<Long>() {
+        viewModel.observeTimeTick(this, new Observer<Long>() {
             @Override
             public void onChanged(Long aLong) {
                 content.setText("" + aLong);

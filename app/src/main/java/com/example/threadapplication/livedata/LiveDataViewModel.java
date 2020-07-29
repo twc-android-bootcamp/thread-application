@@ -5,8 +5,11 @@ import android.util.Log;
 
 import java.util.concurrent.TimeUnit;
 
+import androidx.annotation.NonNull;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 import io.reactivex.Observable;
 import io.reactivex.disposables.Disposable;
@@ -25,12 +28,12 @@ public class LiveDataViewModel extends ViewModel {
         timeTick.postValue(0L);
     }
 
-    public LiveData<Long> getTimeTick() {
-        return timeTick;
+    public void observeTimeTick(@NonNull LifecycleOwner owner, @NonNull Observer observer) {
+        timeTick.observe(owner, observer);
     }
 
-    public LiveData<Boolean> getIsStarted() {
-        return isStarted;
+    public void observeIsStarted(@NonNull LifecycleOwner owner, @NonNull Observer observer) {
+        isStarted.observe(owner, observer);
     }
 
     public void setIsStarted(Boolean value) {
@@ -60,6 +63,8 @@ public class LiveDataViewModel extends ViewModel {
         disposable.dispose();
     }
 
+
+
     private void startUpdateTimeTick() {
         disposable = Observable.interval(1, 1, TimeUnit.SECONDS).subscribe(new Consumer<Long>() {
             @Override
@@ -71,8 +76,6 @@ public class LiveDataViewModel extends ViewModel {
         });
 
     }
-
-
 
     @Override
     protected void onCleared() {

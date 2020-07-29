@@ -5,6 +5,7 @@ import android.util.Log;
 
 import java.util.concurrent.TimeUnit;
 
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import io.reactivex.Observable;
@@ -16,7 +17,15 @@ public class LiveDataViewModel extends ViewModel {
     private MutableLiveData<Long> timeTick;
     private Disposable disposable;
 
-    public MutableLiveData<Boolean> getIsStarted() {
+    public LiveData<Long> getTimeTick() {
+        if(timeTick == null) {
+            timeTick = new MutableLiveData<>();
+            timeTick.postValue(0L);
+        }
+        return timeTick;
+    }
+
+    public LiveData<Boolean> getIsStarted() {
         if(isStarted == null) {
             isStarted = new MutableLiveData<>();
             isStarted.postValue(false);
@@ -63,13 +72,7 @@ public class LiveDataViewModel extends ViewModel {
 
     }
 
-    public MutableLiveData<Long> getTimeTick() {
-        if(timeTick == null) {
-            timeTick = new MutableLiveData<>();
-            timeTick.postValue(0L);
-        }
-        return timeTick;
-    }
+
 
     @Override
     protected void onCleared() {
